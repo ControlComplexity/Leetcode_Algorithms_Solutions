@@ -1,0 +1,50 @@
+
+1.code public class MergeSort {
+
+public static void main(String[] args) {
+	int [] input = {1,2,4,1,2,0,23};
+	int[] temp = new int [input.length];
+	mergeSort(input,0,input.length-1, temp);
+	for (int i = 0; i < input.length; i++) {
+		System.out.println(input[i]);
+	}
+}
+
+	public static void mergeSort(int[] input, int left, int right, int[] temp) {
+		if (left < right) {
+			int middle = ( left + right) / 2;
+			mergeSort(input, left, middle, temp);
+			mergeSort(input, middle+1, right, temp);
+			merge(input, left, middle, right, temp);
+		}
+	}
+
+	private static void merge(int[] input, int left, int middle, int right, int[] temp) {
+		int j = left, k = middle+1;
+		int t = 0;
+		while (j <= middle && k <= right) {
+			if (input[j] <= input[k]) {
+				temp[t++] = input[j++];
+			} else {
+				temp[t++] = input[k++];
+			}
+		}
+		while(j<=middle)
+		{
+			temp[t++] = input[j++];
+		}
+		while(k<=right)
+		{
+			temp[t++] = input[k++];
+		}
+		System.out.println("left:" + left);
+		System.out.println("t:" + t);
+		for (int i = 0; i < t; i++) {
+			input[left+i] = temp[i];
+		}
+	}
+
+}
+
+2. 归并排序，每次还要合并并排序。
+要定义全局变量。
