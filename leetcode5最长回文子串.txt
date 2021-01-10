@@ -1,0 +1,21 @@
+a. public static String longestPalindrome(String s) {
+	    int length = s.length();
+	    boolean[][] P = new boolean[length][length];
+	    int maxLen = 0;
+	    String maxPal = "";
+	    for (int len = 1; len <= length; len++) //遍历所有的长度
+	        for (int start = 0; start < length; start++) {
+	            int end = start + len - 1;
+	            if (end >= length) //下标已经越界，结束本次循环
+	                break;
+	            P[start][end] = (len == 1 || len == 2 || P[start + 1][end - 1]) && s.charAt(start) == s.charAt(end); //长度为 1 和 2 的单独判断下
+	            if (P[start][end] && len > maxLen) {
+	                maxPal = s.substring(start, end + 1);
+	            }
+	        }
+	    return maxPal;
+}
+
+b. 对于一个子串而言，如果它是回文串，并且长度大于 22，那么将它首尾的两个字母去除之后，它仍然是个回文串。
+例如对于字符串 \textrm{``ababa''}“ababa”，如果我们已经知道 \textrm{``bab''}“bab” 是回文串，那么 \textrm{``ababa''}“ababa” 一定是回文串，这是因为它的首尾两个字母都是 \textrm{``a''}“a”。
+注意：在状态转移方程中，我们是从长度较短的字符串向长度较长的字符串进行转移的，因此一定要注意动态规划的循环顺序。
