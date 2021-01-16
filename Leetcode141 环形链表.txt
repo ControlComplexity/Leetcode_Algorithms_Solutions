@@ -1,0 +1,15 @@
+a. public class Solution {
+    public boolean hasCycle(ListNode head) {
+          ListNode fast = head;
+          ListNode slow = head;
+        while(fast != null && fast.next != null)
+        {
+             fast = fast.next.next;
+             slow = slow.next;
+             if(slow == fast)
+             return true;} return false;}}
+
+b. 快慢指针方法。如果相遇则返回true。
+可以用do while 也可以用while。
+while是先判断再循环， do while是先循环再判断。
+时间复杂度是O(N),因为每次距离减1
