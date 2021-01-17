@@ -1,0 +1,22 @@
+a.class Solution {
+    public  int lengthOfLongestSubstring(String s) {
+        HashMap<Integer, Character> map = new HashMap<Integer, Character>();
+        int left = 0, right = 0;
+        int res = 0;
+        while(right < s.length())
+        {
+        while(map.containsValue(s.charAt(right)) && left< right)
+        {        	map.remove(left);
+          	left ++;
+        }
+        map.put(right, s.charAt(right));
+        right ++;
+     
+        res = Math.max(res, right - left);
+        }
+        return res;}}
+
+b.思路： hashmap检查重复元素，双指针移动
+我们使用两个指针，一个left一个right，最开始的时候i和j指向第一个元素，
+然后i往后移，把扫描过的元素都放到map中，如果left扫描过的元素没有重复的就一直往后移，
+顺便记录一下最大值max，如果i扫描过的元素有重复的，就改变right的位置。
