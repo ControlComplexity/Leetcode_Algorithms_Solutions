@@ -1,0 +1,40 @@
+a./**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+   public  boolean isSymmetric (TreeNode root) {
+if(root == null) return true;
+return helper(root.left, root.right);
+}
+public  boolean helper(TreeNode left, TreeNode right) {
+	// TODO Auto-generated method stub
+    if(left == null && right == null) return true;
+	if(left == null || right == null)
+		return false;
+	else 
+	{
+		return ((left.val == right.val) && (helper(left.left, right.right))&& (helper(right.left, left.right)));
+	}
+}
+}
+
+b.  
+要想两棵树镜像，那么一棵树左边的左边要和二棵树右边的右边镜像，一棵树左边的右边要和二棵树右边的左边镜像
+调用递归函数传入左左和右右
+调用递归函数传入左右和右左
+只有左左和右右镜像且左右和右左镜像的时候，我们才能说这两棵树是镜像的
+
+(helper(left.left, right.right))&& (helper(right.left, left.right)
+而不是 (helper(left.left, left.right))&& (helper(right.left, right.right).
+
+c. if(left == null || right == null) 表示的是 
+if(left != null && right == null)
+ ||
+if(left == null && right == null)
+
