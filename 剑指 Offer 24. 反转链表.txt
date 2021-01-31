@@ -1,0 +1,30 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+public ListNode reverseList(ListNode head) {
+	if(head == null || head.next == null)
+		 return head;
+	ListNode curr = head, pre = null;
+	while(curr != null)
+	{
+		ListNode next = curr.next; 
+		curr.next = pre;
+		pre = curr;
+		curr = next;
+		
+	}
+	return pre;
+  }
+}
+
+
+b.双指针
+c. next 记忆curr.next,这样，curr的值就是对的，不会出现循环。
+由于节点没有引用其前一个节点，因此必须事先存储其前一个节点。
+在更改引用之前，还需要存储后一个节点。最后返回新的头引用。

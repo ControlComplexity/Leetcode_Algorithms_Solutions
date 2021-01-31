@@ -1,0 +1,17 @@
+a.class Solution {
+  public int search(int[] nums, int target) {
+    int pivot, left = 0, right = nums.length - 1;
+    while (left <= right) {
+      pivot = left + (right - left) / 2;
+      if (nums[pivot] == target) return pivot;
+      if (target < nums[pivot]) right = pivot - 1;
+      else left = pivot + 1;
+    }
+    return -1;
+  }
+}
+
+b.不需要递归，直接while循环就行。
+如果目标值等于中间元素，则找到目标值。
+如果目标值较小，继续在左侧搜索。
+如果目标值较大，则继续在右侧搜索。

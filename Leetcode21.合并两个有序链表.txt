@@ -1,0 +1,26 @@
+a. class Solution {
+    	public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+	if(l1 == null && l2 == null)
+		return null;
+	if(l1 == null && l2 != null)
+		return l2;
+	if(l1 != null && l2 == null)
+		return l1;
+	if(l1.val <l2.val)
+	{
+		l1.next = mergeTwoLists(l1.next, l2);
+		return l1;
+	}
+	else
+	{
+		l2.next = mergeTwoLists(l2.next, l1);
+		return l2;
+	}}}
+
+b.递归方法，容易一看就懂但是写不出来。
+什么是递归呢？函数在运行时调用自己，这个函数就叫递归函数，调用的过程叫做递归。
+递归函数必须要有终止条件，否则会出错；
+递归函数先不断调用自身，直到遇到终止条给出一个递归算法，
+其时间复杂度通常是递归调用的数量和计算的时间复杂度的乘积的乘积。
+
+
